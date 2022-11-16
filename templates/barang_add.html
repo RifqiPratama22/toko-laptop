@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+            <div class="body">
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label">merek</label>
+                      <select name="merek" id="" class="form-control">
+                        {% for merek in merek %}
+                            {% if get_produk.merek == merek %}
+                              <option value"{{ merek.nama }}" selected="selected">{{ merek.nama }}</option>
+                            {% else %}
+                            <option value"{{ merek.nama }}">{{ merek.nama }}</option>
+                            {% endif %}
+                        {% endfor %}
+
+                      </select>
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleInputPassword1" class="form-label">Nama</label>
+                      <input type="text" class="form-control" name="nama" value="{{ get_produk.nama }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Harga</label>
+                        <input type="text" class="form-control" name="harga" value="{{ get_produk.harga }}">
+                      </div>
+                    <div class="mb-3">
+                        <label class="form-label">Deskripsi Laptop </label>
+                        <textarea name="deskripsi" class="form-control" placeholder="deskripsi sesuai produk"> {{ get_produk.deskripsi }}</textarea>
+                        
+                    </div>
+                    <br>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </form>
+            </div>
+        
+    </div>
+
+{% endblock content %}

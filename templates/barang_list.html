@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br>
+    <div class="container">
+        <div class="row">
+            <div class="card">
+                <div class="header">
+                    <br>
+                    <a class="btn btn-success" href="{% url 'barang_add' %}">Tambah</a>
+                </div>
+                    <br>
+                <div class="body">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nama</th>
+                            <th scope="col">Deskripsi Barang</th>
+                            <th scope="col">Merek</th>
+                            <th scope="col">Harga</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            {% for p in produk %}
+                        <tr>
+                            <th scope="row">{{ forloop.counter }}</th>
+                            <td>{{ p }}</td>
+                            <td>{{ p.deskripsi }}</td>
+                            <td>{{ p.merek }}</td>
+                            <td>{{ p.harga }}</td>
+                            <td>
+                                <a class="btn btn-warning btn-sm" href="{% url 'barang_update' p.id %}">update</a>
+                                <br>
+                                <a onclick="alert('Anda yakin ingin menghapus?')" class="btn btn-danger btn-sm" href="{% url 'barang_delete' p.id %}">delete</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
