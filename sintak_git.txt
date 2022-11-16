@@ -1,0 +1,6 @@
+git init
+git add
+git commit -m "updates"
+git branch -M master
+git remote add origin https://github.com/RifqiPratama22/toko-laptop.git
+git push
